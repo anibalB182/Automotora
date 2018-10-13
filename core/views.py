@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from .models import Automovil, Marca
 #importamos la mensajeria de django
 from django.contrib import messages
-#nuevo comentario ...
+#nuevo comentario
+from django.contrib.auth.decorators import login_required
+#Un decorador nos permite agregar funcionalidad extra a un metodo
+
 
 # Create your views here.
 
@@ -23,6 +26,7 @@ def listado(request):
         'autos':autos
     })
 
+@login_required
 def formulario(request):
     marcas = Marca.objects.all()
 
